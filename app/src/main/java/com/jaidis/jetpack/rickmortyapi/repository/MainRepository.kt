@@ -1,10 +1,10 @@
 package com.jaidis.jetpack.rickmortyapi.repository
 
-import com.jaidis.jetpack.rickmortyapi.data.CharacterResponse
 import com.jaidis.jetpack.rickmortyapi.data.CharactersResponse
-import com.jaidis.jetpack.rickmortyapi.data.EpisodeResponse
 import com.jaidis.jetpack.rickmortyapi.data.EpisodesResponse
-import com.jaidis.jetpack.rickmortyapi.data.LocationResponse
+import com.jaidis.jetpack.rickmortyapi.data.GsonCharacter
+import com.jaidis.jetpack.rickmortyapi.data.GsonEpisode
+import com.jaidis.jetpack.rickmortyapi.data.GsonLocation
 import com.jaidis.jetpack.rickmortyapi.data.LocationsResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -18,7 +18,7 @@ class MainRepository(
         const val BASE_URL = "https://rickandmortyapi.com/api/"
     }
 
-    suspend fun getCharacter(characterId: String): CharacterResponse =
+    suspend fun getCharacter(characterId: String): GsonCharacter =
         withContext(Dispatchers.IO) {
             return@withContext charactersWebService.getCharacter(characterId)
         }
@@ -33,7 +33,7 @@ class MainRepository(
             return@withContext charactersWebService.getCharactersPage(page)
         }
 
-    suspend fun getEpisode(locationId: String): EpisodeResponse =
+    suspend fun getEpisode(locationId: String): GsonEpisode =
         withContext(Dispatchers.IO) {
             return@withContext episodesWebService.getEpisode(locationId)
         }
@@ -48,7 +48,7 @@ class MainRepository(
             return@withContext episodesWebService.getEpisodesPage(page)
         }
 
-    suspend fun getLocation(locationId: String): LocationResponse =
+    suspend fun getLocation(locationId: String): GsonLocation =
         withContext(Dispatchers.IO) {
             return@withContext locationsWebService.getLocation(locationId)
         }

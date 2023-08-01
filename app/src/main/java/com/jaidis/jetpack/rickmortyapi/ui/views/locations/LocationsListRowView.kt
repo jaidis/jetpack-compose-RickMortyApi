@@ -25,7 +25,7 @@ fun LocationsListRowView(location: Location, locationSelected: (network: Locatio
 
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                location.name!!,
+                location.name ?: "",
                 style = MaterialTheme.typography.h6,
                 fontWeight = FontWeight.Bold,
                 maxLines = 1, overflow = TextOverflow.Ellipsis,
@@ -33,7 +33,7 @@ fun LocationsListRowView(location: Location, locationSelected: (network: Locatio
 
             CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
                 Text(
-                    "${location.residents?.size} resident(s)",
+                    "${location.residents?.size ?: 0} resident(s)",
                     style = MaterialTheme.typography.body2
                 )
             }

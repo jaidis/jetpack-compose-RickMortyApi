@@ -10,8 +10,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.jaidis.jetpack.rickmortyapi.ui.views.characters.CharacterDeatilView
 import com.jaidis.jetpack.rickmortyapi.ui.views.characters.CharactersListView
+import com.jaidis.jetpack.rickmortyapi.ui.views.episodes.EpisodeDetailView
 import com.jaidis.jetpack.rickmortyapi.ui.views.episodes.EpisodesListView
+import com.jaidis.jetpack.rickmortyapi.ui.views.locations.LocationDetailView
 import com.jaidis.jetpack.rickmortyapi.ui.views.locations.LocationsListView
 import com.jaidis.jetpack.rickmortyapi.viewmodel.MainViewModel
 
@@ -27,25 +30,34 @@ fun AppNavigation(navController: NavHostController, viewModel: MainViewModel) {
                 navController.navigate(AppScreens.CharacterDetailsScreen.route + "/${it.id}")
             }
         }
-        /*composable(AppScreens.CharacterDetailsScreen.route + "/{id}") { backStackEntry ->
-            CharacterDetailView(viewModel, backStackEntry.arguments?.get("id") as String, popBack = { navController.popBackStack() })
-        }*/
+        composable(AppScreens.CharacterDetailsScreen.route + "/{id}") { backStackEntry ->
+            CharacterDeatilView(
+                viewModel,
+                backStackEntry.arguments?.get("id") as String,
+                popBack = { navController.popBackStack() })
+        }
         composable(AppScreens.EpisodesScreen.route) {
             EpisodesListView(viewModel, bottomBar) {
                 navController.navigate(AppScreens.EpisodeDetailsScreen.route + "/${it.id}")
             }
         }
-        /*composable(AppScreens.EpisodeDetailsScreen.route + "/{id}") { backStackEntry ->
-            EpisodeDetailView(viewModel, backStackEntry.arguments?.get("id") as String, popBack = { navController.popBackStack() })
-        }*/
+        composable(AppScreens.EpisodeDetailsScreen.route + "/{id}") { backStackEntry ->
+            EpisodeDetailView(
+                viewModel,
+                backStackEntry.arguments?.get("id") as String,
+                popBack = { navController.popBackStack() })
+        }
         composable(AppScreens.LocationsScreen.route) {
             LocationsListView(viewModel, bottomBar) {
                 navController.navigate(AppScreens.LocationDetailsScreen.route + "/${it.id}")
             }
         }
-        /*composable(AppScreens.LocationDetailsScreen.route + "/{id}") { backStackEntry ->
-            LocationDetailView(viewModel, backStackEntry.arguments?.get("id") as String, popBack = { navController.popBackStack() })
-        }*/
+        composable(AppScreens.LocationDetailsScreen.route + "/{id}") { backStackEntry ->
+            LocationDetailView(
+                viewModel,
+                backStackEntry.arguments?.get("id") as String,
+                popBack = { navController.popBackStack() })
+        }
     }
 }
 

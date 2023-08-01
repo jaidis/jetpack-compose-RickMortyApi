@@ -1,7 +1,7 @@
 package com.jaidis.jetpack.rickmortyapi.repository
 
-import com.jaidis.jetpack.rickmortyapi.data.EpisodeResponse
 import com.jaidis.jetpack.rickmortyapi.data.EpisodesResponse
+import com.jaidis.jetpack.rickmortyapi.data.GsonEpisode
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -10,7 +10,7 @@ class EpisodesWebService {
         createEpisodesApi()
     }
 
-    suspend fun getEpisode(id: String): EpisodeResponse {
+    suspend fun getEpisode(id: String): GsonEpisode {
         return api.getEpisodeId(id)
     }
 

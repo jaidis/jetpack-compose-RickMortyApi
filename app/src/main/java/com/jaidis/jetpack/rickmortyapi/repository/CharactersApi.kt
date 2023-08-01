@@ -1,14 +1,14 @@
 package com.jaidis.jetpack.rickmortyapi.repository
 
-import com.jaidis.jetpack.rickmortyapi.data.CharacterResponse
 import com.jaidis.jetpack.rickmortyapi.data.CharactersResponse
+import com.jaidis.jetpack.rickmortyapi.data.GsonCharacter
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface CharactersApi {
 
     @GET("character/{id}")
-    suspend fun getCharacterId(@Path("id") id: String): CharacterResponse
+    suspend fun getCharacterId(@Path("id") id: String): GsonCharacter
 
     @GET("character")
     suspend fun getCharacters(): CharactersResponse

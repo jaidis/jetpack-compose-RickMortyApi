@@ -6,7 +6,8 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import com.jaidis.jetpack.rickmortyapi.data.Character
+import androidx.compose.ui.res.stringResource
+import com.jaidis.jetpack.rickmortyapi.R
 import com.jaidis.jetpack.rickmortyapi.data.Episode
 import com.jaidis.jetpack.rickmortyapi.viewmodel.MainViewModel
 
@@ -18,7 +19,7 @@ fun EpisodesListView(
 ) {
     val episodeList = viewModel.episodes
     Scaffold(
-        topBar = { TopAppBar(title = { Text("Characters") }) },
+        topBar = { TopAppBar(title = { Text(stringResource(R.string.episodes)) }) },
         bottomBar = bottomBar
     )
     {

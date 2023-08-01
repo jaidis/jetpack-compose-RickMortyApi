@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Rick &amp; Morty API</string>
+    <string name="character">Character</string>
+    <string name="characters">Characters</string>
+    <string name="ch_gender">Gender</string>
+    <string name="ch_info">INFO</string>
+    <string name="ch_location">Location</string>
+    <string name="ch_mugshot">MUGSHOT</string>
+    <string name="ch_species">Species</string>
+    <string name="ch_status">Status</string>
+    <string name="ch_origin">Origin</string>
+    <string name="episode">Episode</string>
+    <string name="episodes">Episodes</string>
+    <string name="ep_air_date">Air date</string>
+    <string name="ep_episode">Episode</string>
+    <string name="ep_total_ch">Total characters</string>
+    <string name="generic_back">Back</string>
+    <string name="generic_unknown">Unknown</string>
+    <string name="location">Location</string>
+    <string name="locations">Locations</string>
+    <string name="lo_dimension">Dimension</string>
+    <string name="lo_type">Type</string>
+    <string name="lo_total_ch">Total residents</string>
 </resources>

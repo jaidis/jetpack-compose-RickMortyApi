@@ -14,7 +14,7 @@ sealed class AppScreens(val route: String, val label: String, val icon: ImageVec
     object EpisodeDetailsScreen : AppScreens("EpisodeDetails", "EpisodeDetails")
     object LocationDetailsScreen : AppScreens("LocationDetails", "LocationDetails")
 
-    fun withArgs(vararg args: String): String {
+    /*fun withArgs(vararg args: String): String {
         return buildString {
             append(route)
             args.forEach { arg ->
@@ -30,5 +30,5 @@ sealed class AppScreens(val route: String, val label: String, val icon: ImageVec
                 append("/{$arg}")
             }
         }
-    }
+    }*/
 }

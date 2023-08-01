@@ -1,7 +1,7 @@
 package com.jaidis.jetpack.rickmortyapi.repository
 
-import com.jaidis.jetpack.rickmortyapi.data.CharacterResponse
 import com.jaidis.jetpack.rickmortyapi.data.CharactersResponse
+import com.jaidis.jetpack.rickmortyapi.data.GsonCharacter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -10,7 +10,7 @@ class CharactersWebService {
         createCharactersApi()
     }
 
-    suspend fun getCharacter(id: String): CharacterResponse {
+    suspend fun getCharacter(id: String): GsonCharacter {
         return api.getCharacterId(id)
     }
 

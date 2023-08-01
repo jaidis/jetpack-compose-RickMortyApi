@@ -25,7 +25,7 @@ fun EpisodesListRowView(episode: Episode, episodeSelected: (network: Episode) ->
 
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                episode.name!!,
+                episode.name ?: "",
                 style = MaterialTheme.typography.h6,
                 fontWeight = FontWeight.Bold,
                 maxLines = 1, overflow = TextOverflow.Ellipsis,
@@ -33,7 +33,7 @@ fun EpisodesListRowView(episode: Episode, episodeSelected: (network: Episode) ->
 
             CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
                 Text(
-                    episode.episode!!,
+                    episode.episode ?: "",
                     style = MaterialTheme.typography.body2
                 )
             }

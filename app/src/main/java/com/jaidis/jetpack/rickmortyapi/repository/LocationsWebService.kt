@@ -1,6 +1,6 @@
 package com.jaidis.jetpack.rickmortyapi.repository
 
-import com.jaidis.jetpack.rickmortyapi.data.LocationResponse
+import com.jaidis.jetpack.rickmortyapi.data.GsonLocation
 import com.jaidis.jetpack.rickmortyapi.data.LocationsResponse
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,7 +10,7 @@ class LocationsWebService {
         createLocationsApi()
     }
 
-    suspend fun getLocation(id: String): LocationResponse {
+    suspend fun getLocation(id: String): GsonLocation {
         return api.getLocationId(id)
     }
 

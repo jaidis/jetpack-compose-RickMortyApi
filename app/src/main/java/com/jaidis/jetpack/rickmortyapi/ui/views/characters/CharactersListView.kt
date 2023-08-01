@@ -6,6 +6,8 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.jaidis.jetpack.rickmortyapi.R
 import com.jaidis.jetpack.rickmortyapi.data.Character
 import com.jaidis.jetpack.rickmortyapi.viewmodel.MainViewModel
 
@@ -17,7 +19,7 @@ fun CharactersListView(
 ) {
     val characterList = viewModel.characters
     Scaffold(
-        topBar = { TopAppBar(title = { Text("Characters") }) },
+        topBar = { TopAppBar(title = { Text(stringResource(R.string.characters)) }) },
         bottomBar = bottomBar
     )
     {
