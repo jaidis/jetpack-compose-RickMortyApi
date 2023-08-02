@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jaidis.jetpack.rickmortyapi.data.Character
 import com.jaidis.jetpack.rickmortyapi.data.Episode
+import com.jaidis.jetpack.rickmortyapi.data.GsonInfo
 import com.jaidis.jetpack.rickmortyapi.data.Location
 import com.jaidis.jetpack.rickmortyapi.data.asCharacter
 import com.jaidis.jetpack.rickmortyapi.data.asCharacters
@@ -23,8 +24,11 @@ import kotlinx.coroutines.launch
 class MainViewModel : ViewModel() {
 
     var characters: List<Character>? by mutableStateOf(null)
+    var charactersInfo: GsonInfo? = null
     var episodes: List<Episode>? by mutableStateOf(null)
+    var episodesInfo: GsonInfo? = null
     var locations: List<Location>? by mutableStateOf(null)
+    var locationsInfo: GsonInfo? = null
 
     private val repository = MainRepository(
         CharactersWebService(), EpisodesWebService(), LocationsWebService()
@@ -37,12 +41,18 @@ class MainViewModel : ViewModel() {
     fun getCharacters() = viewModelScope.launch {
         val response = repository.getCharacters()
         characters = response.asCharacters()
+        charactersInfo = response.info
     }
 
-    fun getCharactersPages(page: String) = viewModelScope.launch {
+    fun getCharactersNext() = viewModelScope.launch {
         val tempList = characters?.toMutableList()
-        tempList?.addAll(repository.getCharactersPage(page).asCharacters())
-        characters = tempList
+        if (charactersInfo?.next != null) {
+            val response =
+                repository.getCharactersPage(charactersInfo?.next!!.filter { it.isDigit() })
+            tempList?.addAll(response.asCharacters())
+            characters = tempList
+            charactersInfo = response.info
+        }
     }
 
     suspend fun getEpisode(locationId: String): Episode {
@@ -54,10 +64,15 @@ class MainViewModel : ViewModel() {
         episodes = response.asEpisodes()
     }
 
-    fun getEpisodesPages(page: String) = viewModelScope.launch {
+    fun getEpisodesNext() = viewModelScope.launch {
         val tempList = episodes?.toMutableList()
-        tempList?.addAll(repository.getEpisodesPage(page).asEpisodes())
-        episodes = tempList
+        if (episodesInfo?.next != null) {
+            val response =
+                repository.getEpisodesPage(episodesInfo?.next!!.filter { it.isDigit() })
+            tempList?.addAll(response.asEpisodes())
+            episodes = tempList
+            episodesInfo = response.info
+        }
     }
 
     suspend fun getLocation(locationId: String): Location {
@@ -67,13 +82,17 @@ class MainViewModel : ViewModel() {
     fun getLocations() = viewModelScope.launch {
         val response = repository.getLocations()
         locations = response.asLocations()
+        locationsInfo = response.info
     }
 
-    fun getLocationsPages(page: String) = viewModelScope.launch {
+    fun getLocationsNext() = viewModelScope.launch {
         val tempList = locations?.toMutableList()
-        tempList?.addAll(repository.getLocationsPage(page).asLocations())
-        locations = tempList
+        if (locationsInfo?.next != null) {
+            val response =
+                repository.getLocationsPage(locationsInfo?.next!!.filter { it.isDigit() })
+            tempList?.addAll(response.asLocations())
+            locations = tempList
+            locationsInfo = response.info
+        }
     }
-
-
 }

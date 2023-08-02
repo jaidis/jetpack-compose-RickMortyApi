@@ -4,6 +4,7 @@ import com.jaidis.jetpack.rickmortyapi.data.GsonLocation
 import com.jaidis.jetpack.rickmortyapi.data.LocationsResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface LocationsApi {
 
@@ -13,6 +14,6 @@ interface LocationsApi {
     @GET("location")
     suspend fun getLocations(): LocationsResponse
 
-    @GET("location?page={id}")
-    suspend fun getLocationsPage(@Path("id") id: String): LocationsResponse
+    @GET("location")
+    suspend fun getLocationsPage(@Query("page") page: String): LocationsResponse
 }

@@ -4,6 +4,7 @@ import com.jaidis.jetpack.rickmortyapi.data.EpisodesResponse
 import com.jaidis.jetpack.rickmortyapi.data.GsonEpisode
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface EpisodesApi {
 
@@ -13,6 +14,6 @@ interface EpisodesApi {
     @GET("episode")
     suspend fun getEpisodes(): EpisodesResponse
 
-    @GET("episode?page={id}")
-    suspend fun getEpisodesPage(@Path("id") id: String): EpisodesResponse
+    @GET("episode")
+    suspend fun getEpisodesPage(@Query("page") page: String): EpisodesResponse
 }

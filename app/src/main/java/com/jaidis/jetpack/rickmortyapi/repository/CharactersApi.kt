@@ -4,6 +4,7 @@ import com.jaidis.jetpack.rickmortyapi.data.CharactersResponse
 import com.jaidis.jetpack.rickmortyapi.data.GsonCharacter
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface CharactersApi {
 
@@ -13,6 +14,6 @@ interface CharactersApi {
     @GET("character")
     suspend fun getCharacters(): CharactersResponse
 
-    @GET("character?page={id}")
-    suspend fun getCharactersPage(@Path("id") id: String): CharactersResponse
+    @GET("character")
+    suspend fun getCharactersPage(@Query("page") page: String): CharactersResponse
 }
